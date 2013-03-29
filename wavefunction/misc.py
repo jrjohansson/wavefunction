@@ -44,10 +44,6 @@ def print2DMatrix(A):
         print
 
 
-# ----------------------------------------------------------------------------------
-#  File functions  
-#
-#
 
 #
 # Append row to file

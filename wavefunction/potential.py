@@ -7,18 +7,7 @@
 from scipy import *
 from nummath import * 
 
-#
-# Harmonic oscillator potential 
-#
-def U_ho(x, param):
 
-    omega = param[0]
-    m     = param[1]
-    x0    = param[2]
-    
-    u = 1/2.0 * m * (omega ** 2) * ((x - x0) ** 2)
-
-    return u
 
 #
 # Flux-biased phase qubit potential
@@ -33,18 +22,6 @@ def U_flux_biased(x, param):
     
     return u
 
-#
-# Current-biased phase qubit potential (washboard potential)
-#
-def U_current_biased(x, param):
-
-	Ej = param[0]
-	Ic = param[1] 
-	Ib = param[2]
-
-	u = - Ej * ( cos(x) + Ib/Ic * x )
-
-	return u
 
 #
 # Derivative of Current-biased phase qubit potential

@@ -9,18 +9,6 @@ from nummath import *
 
 
 
-#
-# Flux-biased phase qubit potential
-#
-def U_flux_biased(x, param):
-
-    Ej    = param[0]
-    beta  = param[1]
-    gamma = param[2]
-    
-    u = -Ej * (cos(x) - 1 / (2 * beta) * x ** 2 + gamma * x)
-    
-    return u
 
 
 #

@@ -25,7 +25,7 @@ def recastMtoT(nstates, a, b):
 # Create M-matrix
 #
 def recastMtoV(nstates, M):
-    v = zeros(nstates**2).astype(Float)
+    v = zeros(nstates**2, dtype=float)
     for i in range(0,nstates):
         for j in range(0,nstates):
             v[i*nstates+j] = M[i,j]
@@ -36,7 +36,7 @@ def recastMtoV(nstates, M):
 #
 def recastVtoM(nstates, v):
 
-    M = zeros((nstates,nstates)).astype(Float)
+    M = zeros((nstates,nstates), dtype=float)
     for i in range(0,nstates):
         for j in range(0,nstates):
              M[i,j] = v[i*nstates+j] 

@@ -1,15 +1,11 @@
 #
-# Potential functions
+# Potential functions: no longer used.
 #
 # J Robert Johansson, <robert@riken.jp>
 # 
 
 from scipy import *
 from nummath import * 
-
-
-
-
 
 #
 # Derivative of Current-biased phase qubit potential

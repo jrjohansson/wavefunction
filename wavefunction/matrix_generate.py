@@ -1,6 +1,4 @@
 #
-# 
-#
 # J Robert Johansson, <robert@riken.jp>
 #
 from scipy import *

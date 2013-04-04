@@ -1,6 +1,4 @@
 #
-# Numerical math functions.
-#
 # J Robert Johansson, <robert@riken.jp>
 #
 from scipy import *
@@ -12,7 +10,10 @@ from copy import *
 # Numerical derivative
 #
 def derivative(f, x):
-
+    """
+    Calculate the numerical derivative of f given a discetization of the
+    coordinate x
+    """
     L = len(x)
 
     ddx = zeros(L).astype(type(x))

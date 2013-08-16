@@ -10,4 +10,5 @@ Example notebooks
 * [Harmonic oscillator](http://nbviewer.ipython.org/urls/raw.github.com/jrjohansson/wavefunction/master/Wavefunction-Harmonic-Oscillator.ipynb)
 * [Current-biased Phase Qubit](http://nbviewer.ipython.org/urls/raw.github.com/jrjohansson/wavefunction/master/Wavefunction-Phase-Qubit-Current-Biased.ipynb)
 * [Flux-biased Phase Qubit](http://nbviewer.ipython.org/urls/raw.github.com/jrjohansson/wavefunction/master/Wavefunction-Phase-Qubit-Flux-Biased.ipynb)
+* [Morse oscillator](http://nbviewer.ipython.org/urls/raw.github.com/jrjohansson/wavefunction/master/Wavefunction-Morse-Oscillator.ipynb)
 

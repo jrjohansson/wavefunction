@@ -6,24 +6,9 @@
 from scipy import *
 from scipy import linalg
 
-#----
-# Fig functions
-#
-def setFigure(Fig):
 
-    if Fig:
-        gplt.figure(Fig)
-    else:
-        gplt.figure()
-        gplt.hold('on')
-        Fig = gplt.current()
-    
-    return Fig
-
-
-# -----------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 #  Print functions           
-#
 #
 
 #

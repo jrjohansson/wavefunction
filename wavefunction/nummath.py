@@ -5,7 +5,7 @@
 #
 from scipy import *
 from scipy import linalg
-from misc import *
+from wavefunction.misc import *
 from copy import *
 
 #
@@ -38,7 +38,7 @@ def eigenvectors_sorted(H):
     else:
         vv = real(vv)
 
-    evs = map(None, copy(vv), copy(transpose(SS)))
+    evs = list(map(None, copy(vv), copy(transpose(SS))))
     evs.sort()
     
     for i in range(0,len(vv)):
@@ -66,9 +66,9 @@ def eigenvectors_sorted_new(H):
     evs.sort()
     evals, perm = list(zip(*evs))
     
-    print "evals =", evals
+    print("evals =", evals)
 
-    print "perm =", perm
+    print("perm =", perm)
 
     #for i in range(0,len(vv)):
     #    vv[i]   = evs[i][0]

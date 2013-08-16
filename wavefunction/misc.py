@@ -37,9 +37,9 @@ def print2DMatrix(A):
         for m in range(0, M):
             val = real(A[n][m])
             if val > 0.0:
-                print " %.3f  " % (real(A[n][m])),
+                print(" %.3f  " % (real(A[n][m]))),
             else:
-                print "%.3f  " % (real(A[n][m])),
+                print("%.3f  " % (real(A[n][m]))),
 
         print
 

@@ -5,7 +5,7 @@
 # 
 
 from scipy import *
-from nummath import * 
+from wavefunction.nummath import * 
 
 
 

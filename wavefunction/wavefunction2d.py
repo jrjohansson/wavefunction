@@ -139,6 +139,7 @@ def assemble_u_potential(L1, L2, u_func, X1, X2, T1, T2, args, sparse=False):
                         
     return u
 
+
 def solve_eigenproblem(H):
     vals, vecs = np.linalg.eig(H)
     idx = np.real(vals).argsort()
@@ -146,4 +147,32 @@ def solve_eigenproblem(H):
     vecs = vecs.T[idx]
 
     return vals, vecs
+
+
+def wavefunction_norm(X1, X2, psi):
+    """
+    Calculate the norm of the given wavefunction.
+    """    
+
+    dX1, dX2 = X1[0,1] - X1[0,0], X2[1,0] - X2[0,0]
+    
+    return (psi.conj() * psi).sum() * dX1 * dX2
+
+
+def wavefunction_normalize(X1, X2, psi):
+    """
+    Normalize the given wavefunction.
+    """    
+    
+    return psi / np.sqrt(wavefunction_norm(X1, X2, psi))
+
+
+def expectation_value(X1, X2, operator, psi):
+    """
+    Evaluate the expectation value of a given operator and wavefunction.
+    """    
+
+    dX1, dX2 = X1[0,1] - X1[0,0], X2[1,0] - X2[0,0]
+    
+    return (psi.conj() * operator * psi).sum() * dX1 * dX2
 

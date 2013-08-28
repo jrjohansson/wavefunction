@@ -119,6 +119,26 @@ def evalute_fourier_series(X1, X2, L1, L2, u):
     return U
 
 
+def assemble_u_potential(L1, L2, u_func, X1, X2, T1, T2, args, sparse=False):
+
+    globals().update(args)
+    
+    L1n = 2 * L1 + 1
+    L2n = 2 * L2 + 1
+    
+    U = u_func(X1, X2, args)
+    dX1X2 = (X1[0,1] - X1[0,0]) * (X2[1,0] - X2[0,0]) / (T1 * T2)
+    
+    u = np.zeros((L1n, L2n), dtype=np.complex)
+
+    for n1 in np.arange(-L1, L1+1):
+        N1 = n1 + L1
+        for n2 in np.arange(-L2, L2+1):
+            N2 = n2 + L2
+            u[N1, N2] = (U * np.exp(-2j * np.pi * n1 * X1 / T2) * np.exp(-2j * np.pi * n2 * X2 / T2)).sum() * dX1X2
+                        
+    return u
+
 def solve_eigenproblem(H):
     vals, vecs = np.linalg.eig(H)
     idx = np.real(vals).argsort()

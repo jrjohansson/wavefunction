@@ -58,9 +58,8 @@ def convert_v2m(L1, L2, vec):
 
 def assemble_K(L1, L2, k11, k12, k22, Tx1, Tx2, sparse=False):
     """
-
-
-
+    Assemble the matrix representation of the kinetic energy contribution
+    to the Hamiltonian.
     """    
     L1n = 2 * L1 + 1
     L2n = 2 * L2 + 1
@@ -79,6 +78,7 @@ def assemble_K(L1, L2, k11, k12, k22, Tx1, Tx2, sparse=False):
                                   k22 * (2 * np.pi * m2 / Tx2) ** 2)
                     
     return K
+
 
 def assemble_V(L1, L2, u, sparse=False):
     """
@@ -175,4 +175,41 @@ def expectation_value(X1, X2, operator, psi):
     dX1, dX2 = X1[0,1] - X1[0,0], X2[1,0] - X2[0,0]
     
     return (psi.conj() * operator * psi).sum() * dX1 * dX2
+
+
+def inner_product(X1, X2, psi1, psi2):
+    """
+    Evaluate the inner product of two wavefunctions, psi1 and psi2, on a space
+    described by X1 and X2.
+    """    
+
+    dX1, dX2 = X1[0,1] - X1[0,0], X2[1,0] - X2[0,0]
+    
+    return (psi1.conj() * psi2).sum() * dX1 * dX2
+
+
+def derivative(X1, X2, psi, axis=0):
+    """
+    Evaluate the expectation value of a given operator and wavefunction.
+    """    
+
+    dX1, dX2 = X1[0,1] - X1[0,0], X2[1,0] - X2[0,0]
+
+    M, N = psi.shape
+    
+    dpsi = np.zeros(psi.shape, dtype=np.complex)
+
+    def _idx_wrap(M, m):
+        return m if m < M else m - M
+
+    if axis == 0:
+        for m in range(M):
+            for n in range(N):
+                dpsi[m, n] = (psi[_idx_wrap(M, m+1),n]-psi[m-1,n]) / (2 * dX1)
+    else:
+        for m in range(M):
+            for n in range(N):
+                dpsi[m, n] = (psi[m,_idx_wrap(N, n+1)]-psi[m,n-1]) / (2 * dX2)
+
+    return dpsi
 

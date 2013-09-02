@@ -140,15 +140,6 @@ def assemble_u_potential(L1, L2, u_func, X1, X2, T1, T2, args, sparse=False):
     return u
 
 
-def solve_eigenproblem(H):
-    vals, vecs = np.linalg.eig(H)
-    idx = np.real(vals).argsort()
-    vals = vals[idx]
-    vecs = vecs.T[idx]
-
-    return vals, vecs
-
-
 def wavefunction_norm(X1, X2, psi):
     """
     Calculate the norm of the given wavefunction.

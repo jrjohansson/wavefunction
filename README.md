@@ -3,6 +3,9 @@ wavefunction
 
 Python package for calculating wavefunctions for 1D and 2D potentials.
 
+![wavefunction-logo](https://raw.github.com/jrjohansson/wavefunction/master/wavefunction.png)
+
+
 Example notebooks
 -----------------
 

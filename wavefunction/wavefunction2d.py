@@ -1,10 +1,12 @@
 """
 
-
-
 """
 
 import numpy as np
+
+#
+# Fourier series basis for periodic potentials
+#
 
 def index_m2v(L, n1, n2):
     return (2*L+1) * (n1+L) + (n2+L)
@@ -105,7 +107,7 @@ def assemble_V(L1, L2, u, sparse=False):
     return V
 
 
-def evalute_fourier_series(X1, X2, L1, L2, u):
+def basis_periodic_evaluate(L1, L2, u, X1, X2, T1, T2):
     """
 
 
@@ -114,12 +116,12 @@ def evalute_fourier_series(X1, X2, L1, L2, u):
 
     for n1 in np.arange(-L1, L1+1):
         for n2 in np.arange(-L2, L2+1):            
-            U += u[index_s2a(L1, n1), index_s2a(L2, n2)] * np.exp(1j * n1 * X1) * np.exp(1j * n2 * X2)
+            U += u[index_s2a(L1, n1), index_s2a(L2, n2)] * np.exp(2j * np.pi * n1 * X1 / T1) * np.exp(2j * np.pi * n2 * X2 / T2)
     
     return U
 
 
-def assemble_u_potential(L1, L2, u_func, X1, X2, T1, T2, args, sparse=False):
+def assemble_u_periodic_potential(L1, L2, u_func, X1, X2, T1, T2, args, sparse=False):
 
     globals().update(args)
     
@@ -135,10 +137,19 @@ def assemble_u_potential(L1, L2, u_func, X1, X2, T1, T2, args, sparse=False):
         N1 = n1 + L1
         for n2 in np.arange(-L2, L2+1):
             N2 = n2 + L2
-            u[N1, N2] = (U * np.exp(-2j * np.pi * n1 * X1 / T2) * np.exp(-2j * np.pi * n2 * X2 / T2)).sum() * dX1X2
+            u[N1, N2] = (U * np.exp(-2j * np.pi * n1 * X1 / T1) * np.exp(-2j * np.pi * n2 * X2 / T2)).sum() * dX1X2
                         
     return u
 
+
+#
+# Step basis for general potentials
+#
+
+
+#
+# Position basis functions
+#
 
 def wavefunction_norm(X1, X2, psi):
     """

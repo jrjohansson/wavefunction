@@ -27,7 +27,10 @@ MINOR = 0
 MICRO = 0
 ISRELEASED = False
 VERSION = '%d.%d.%d' % (MAJOR, MINOR, MICRO)
-REVISION = 0 + int(os.popen("git rev-list --all | wc -l").read())
+try:
+    REVISION = 0 + len(os.popen("git rev-list --all").readlines())
+except:
+    REVISION = 0
 
 
 def write_version_py(filename='wavefunction/version.py'):

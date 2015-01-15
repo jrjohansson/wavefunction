@@ -6,6 +6,7 @@ J Robert Johansson, <robert@riken.jp>
 
 import numpy as np
 
+
 def print_matrix(A):
     """
     Print real part of matrix matrix to stdout
@@ -14,7 +15,7 @@ def print_matrix(A):
 
     for m in range(0, M):
         for n in range(0, N):
-            val = A[m,n].real
+            val = A[m, n].real
             if val > 0.0:
                 print(" %.3f  " % val),
             else:
